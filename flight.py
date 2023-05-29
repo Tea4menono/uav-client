@@ -81,7 +81,7 @@ def mission(response):
 
         #New position in decimal degrees
         newlat = original_location['lat'] + (dLat * 180/math.pi)
-        newlon = original_location['lon'] + (dLon * 180/math.pi)
+        newlon = original_location['lng'] + (dLon * 180/math.pi)
         return LocationGlobal(newlat, newlon,original_location['alt']+alt)
     
 
