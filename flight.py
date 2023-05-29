@@ -132,19 +132,14 @@ def mission(response):
     wp = get_location_offset_meters(home, 0, 0, 10);
     cmd = Command(0,0,0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_TAKEOFF, 0, 1, 0, 0, 0, 0, wp.lat, wp.lon, wp.alt)
     cmds.add(cmd)
-    pos1=response[0]
 
-    # move 10 meters north
-    wp = get_location_offset_meters_dict(pos1, 0, 0, 0);
-    cmd = Command(0,0,0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 1, 0, 0, 0, 0, wp.lat, wp.lon, wp.alt)
-    cmds.add(cmd)
 
-    pos2=response[1]
 
-    # move 10 meters east
-    wp = get_location_offset_meters_dict(pos2, 0, 0, 0);
-    cmd = Command(0,0,0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 1, 0, 0, 0, 0, wp.lat, wp.lon, wp.alt)
-    cmds.add(cmd)
+    for i in response:
+        wp = get_location_offset_meters_dict(i, 0, 0, 0);
+        cmd = Command(0,0,0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 1, 0, 0, 0, 0, wp.lat, wp.lon, wp.alt)
+        cmds.add(cmd)
+
 
     # land
     wp = get_location_offset_meters(home, 0, 0, 10);
