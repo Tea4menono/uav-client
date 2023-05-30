@@ -10,11 +10,11 @@ async def connect_websocket():
 
         while True:
             # Send location data to the server
-            if flight.home:
-                print(flight.home,12321)
-                await websocket.send(json.dumps({"latitude":flight.home.lat,
-                                                 "longitude":flight.home.lon,
-                                                 "altitude":flight.home.alt}))
+            if flight.vehicle.location.global_relative_frame:
+                await websocket.send(json.dumps({"latitude":flight.vehicle.location.global_relative_frame.lat,
+                                                 "longitude":flight.vehicle.location.global_relative_frame.lon,
+                                                 "altitude":flight.vehicle.location.global_relative_frame.alt}))
+                await asyncio.sleep(1)
 
 
             # Wait for incoming message from the server
