@@ -23,5 +23,4 @@ async def connect_websocket():
             print(f"Received: {response}")
             flight.mission(response)
 
-
-asyncio.get_event_loop().run_until_complete(connect_websocket())
+asyncio.run(connect_websocket())
