@@ -9,6 +9,11 @@ async def connect_websocket():
         print("Connected to WebSocket server")
 
         while True:
+            # Send location data to the server
+            if flight.home:
+                await websocket.send(json.dumps(flight.home))
+
+
             # Wait for incoming message from the server
             response = await websocket.recv()
             response=json.loads(response)
