@@ -13,7 +13,7 @@ async def connect_websocket():
             if flight.home:
                 print(flight.home,12321)
                 await websocket.send(json.dumps({"latitude":flight.home.lat,
-                                                 "longtitude":flight.home.lon,
+                                                 "longitude":flight.home.lon,
                                                  "altitude":flight.home.alt}))
 
 
