@@ -56,7 +56,7 @@ async def check_internet_connection(url='http://www.google.com', timeout=5):
 
 async def main():
     await check_internet_connection()
-    asyncio.run(connect_websocket())
+    await connect_websocket()
 
 asyncio.run(main())
 
