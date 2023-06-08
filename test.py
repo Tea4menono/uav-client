@@ -2,6 +2,7 @@ import asyncio
 import websockets
 import flight
 import json
+import requests
 
 async def send_location(websocket):
     while True:
@@ -37,4 +38,25 @@ async def connect_websocket():
         for task in pending:
             task.cancel()
 
-asyncio.run(connect_websocket())
+
+
+
+
+async def check_internet_connection(url='http://www.google.com', timeout=5):
+    while True:
+        try:
+            response = requests.get(url, timeout=timeout)
+            # If the request is successful, the status code will be 200
+            if response.status_code == 200:
+                print('Internet connection established.')
+                return True
+        except requests.RequestException:
+            print('No internet connection. Retrying in 5 seconds...')
+            await asyncio.sleep(5)
+
+async def main():
+    await check_internet_connection()
+    asyncio.run(connect_websocket())
+
+asyncio.run(main())
+
