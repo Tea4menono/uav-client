@@ -7,8 +7,7 @@ async def send_location(websocket):
     while True:
         # Send location data to the server
         if flight.home:
-            if  flight.home.alt:
-                await websocket.send(json.dumps({"lat":flight.home.lat,
+            await websocket.send(json.dumps({"lat":flight.home.lat,
                                                 "lon":flight.home.lon,
                                                 "alt":flight.home.alt}))
         await asyncio.sleep(1)  # sleep for 1 second
