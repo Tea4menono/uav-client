@@ -6,7 +6,7 @@ import json
 async def send_location(websocket):
     while True:
         # Send location data to the server
-        if flight.home:
+        if flight.home & flight.home.alt:
             await websocket.send(json.dumps({"lat":flight.home.lat,
                                              "lon":flight.home.lon,
                                              "alt":flight.home.alt}))
