@@ -75,8 +75,6 @@ def mission(response):
 
 
 
-
-
     # takeoff to 10 meters
     wp = get_location_offset_meters(home, 0, 0, 10);
     cmd = Command(0,0,0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_TAKEOFF, 0, 1, 0, 0, 0, 0, wp.lat, wp.lon, wp.alt)

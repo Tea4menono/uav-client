@@ -38,10 +38,6 @@ async def connect_websocket():
         for task in pending:
             task.cancel()
 
-
-
-
-
 async def check_internet_connection(url='http://www.google.com', timeout=5):
     while True:
         try:
