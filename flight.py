@@ -28,7 +28,7 @@ MAV_MODE_AUTO   = 4
 # Connect to the Vehicle
 logging.info("Connecting")
 vehicle = connect("/dev/ttyACM0", wait_ready=True)
-
+    
 
 
 ################################################################################################
