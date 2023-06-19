@@ -12,7 +12,7 @@ from dronekit import connect, Command, LocationGlobal
 from pymavlink import mavutil
 import time, math
 import logging
-logging.basicConfig(filename='app.log', level=logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG)
 
 ################################################################################################
 # Settings
