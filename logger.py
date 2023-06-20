@@ -23,3 +23,5 @@ def get_logger(name):
     logger.addHandler(f_handler)
 
     return logger
+
+autopilot_logger = get_logger('autopilot')
