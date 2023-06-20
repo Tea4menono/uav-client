@@ -23,3 +23,23 @@ sudo systemctl stop test.service
 ```
 sudo systemctl status test.service
 ```
+
+## install timestamp log tool
+
+### use apt-get
+
+```
+sudo apt-get install moreutils
+```
+
+### use homebrew
+
+```
+brew install moreutils
+```
+
+## execute script
+
+```
+python3 test.py 2>&1 | ts '%Y-%m-%d %H:%M:%S' >> logfile.log
+```

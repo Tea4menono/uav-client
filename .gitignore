@@ -28,3 +28,4 @@ coverage
 *.sw?
 
 aaa.py
+bbb.py
