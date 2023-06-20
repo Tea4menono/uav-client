@@ -24,4 +24,4 @@ def get_logger(name):
 
     return logger
 
-autopilot_logger = get_logger('dronekit')
+# autopilot_logger = get_logger('dronekit')
