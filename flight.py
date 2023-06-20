@@ -35,7 +35,7 @@ vehicle = connect("/dev/ttyACM0", wait_ready=True)
 # Listeners
 ################################################################################################
 
-home_position_set = True
+home_position_set = False
 #Create a message listener for home position fix
 @vehicle.on_message('HOME_POSITION')
 def listener(self, name, home_position):
