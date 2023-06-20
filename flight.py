@@ -11,8 +11,6 @@
 from dronekit import connect, Command, LocationGlobal
 from pymavlink import mavutil
 import time, math
-import logger
-log = logger.get_logger(__name__)
 
 ################################################################################################
 # Settings
@@ -26,7 +24,7 @@ MAV_MODE_AUTO   = 4
 ################################################################################################
 
 # Connect to the Vehicle
-log.info("Connecting")
+print("Connecting")
 vehicle = connect("/dev/ttyACM0", wait_ready=True)
     
 
@@ -51,15 +49,15 @@ def listener(self, name, home_position):
 
 # wait for a home position lock
 while not home_position_set:
-    log.info("Waiting for home position...")
+    print("Waiting for home position...")
     time.sleep(1)
 
 # Display basic vehicle state
-log.info(" Type: %s" % vehicle._vehicle_type)
-log.info(" Armed: %s" % vehicle.armed)
-log.info(" System status: %s" % vehicle.system_status.state)
-log.info(" GPS: %s" % vehicle.gps_0)
-log.info(" Alt: %s" % vehicle.location.global_relative_frame)
+print(" Type: %s" % vehicle._vehicle_type)
+print(" Armed: %s" % vehicle.armed)
+print(" System status: %s" % vehicle.system_status.state)
+print(" GPS: %s" % vehicle.gps_0)
+print(" Alt: %s" % vehicle.location.global_relative_frame)
 
 home = vehicle.location.global_relative_frame
 
@@ -107,7 +105,7 @@ def mission(response):
     while nextwaypoint < len(vehicle.commands):
         if vehicle.commands.next > nextwaypoint:
             display_seq = vehicle.commands.next+1
-            log.info("Moving to waypoint %s" % display_seq)
+            print("Moving to waypoint %s" % display_seq)
             nextwaypoint = vehicle.commands.next
         time.sleep(1)
 

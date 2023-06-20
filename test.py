@@ -3,8 +3,6 @@ import websockets
 import flight
 import json
 import requests
-import logger
-log = logger.get_logger(__name__)
 async def send_location(websocket):
     while True:
         # Send location data to the server
@@ -19,14 +17,14 @@ async def receive_messages(websocket):
         # Wait for incoming message from the server
         response = await websocket.recv()
         response = json.loads(response)
-        log.info(f"Received: {response}")
+        print(f"Received: {response}")
         flight.mission(response)
 
 async def connect_websocket():
     uri = "ws://3.139.94.118:3000"  # Replace with your WebSocket server URL
 
     async with websockets.connect(uri) as websocket:
-        log.info("Connected to WebSocket server")
+        print("Connected to WebSocket server")
 
         sender = asyncio.create_task(send_location(websocket))
         receiver = asyncio.create_task(receive_messages(websocket))
@@ -45,10 +43,10 @@ async def check_internet_connection(url='http://www.google.com', timeout=5):
             response = requests.get(url, timeout=timeout)
             # If the request is successful, the status code will be 200
             if response.status_code == 200:
-                log.info('Internet connection established.')
+                print('Internet connection established.')
                 return True
         except requests.RequestException:
-            log.info('No internet connection. Retrying in 5 seconds...')
+            print('No internet connection. Retrying in 5 seconds...')
             await asyncio.sleep(5)
 
 async def main():
