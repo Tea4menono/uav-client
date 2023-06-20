@@ -8,11 +8,11 @@ log = logger.get_logger(__name__)
 async def send_location(websocket):
     while True:
         # Send location data to the server
-        if flight.home and flight.home.lat:
+        if flight.vehicle.location.global_relative_frame and flight.vehicle.location.global_relative_frame.lat:
             
-            await websocket.send(json.dumps({"type":"position","data":{"lat":flight.home.lat,
-                                             "lon":flight.home.lon,
-                                             "alt":flight.home.alt}}))
+            await websocket.send(json.dumps({"type":"position","data":{"lat":flight.vehicle.location.global_relative_frame.lat,
+                                             "lon":flight.vehicle.location.global_relative_frame.lon,
+                                             "alt":flight.vehicle.location.global_relative_frame.alt}}))
         await asyncio.sleep(1)  # sleep for 1 second
 
 async def receive_messages(websocket):

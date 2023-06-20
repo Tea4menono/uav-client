@@ -3,6 +3,7 @@ import logging
 def get_logger(name):
     # Create a custom logger
     logger = logging.getLogger(name)
+    logger.propagate = False  # This stops the messages being passed to the root logger
     logger.setLevel(logging.DEBUG)  # Set the minimum logged level to DEBUG
 
     # Create handlers
