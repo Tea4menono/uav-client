@@ -41,5 +41,5 @@ brew install moreutils
 ## execute script
 
 ```
-python3 test.py 2>&1 | ts '%Y-%m-%d %H:%M:%S' >> logfile.log
+python3 main.py 2>&1 | ts '%Y-%m-%d %H:%M:%S' >> logfile.log
 ```
