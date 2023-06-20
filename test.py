@@ -9,7 +9,6 @@ async def send_location(websocket):
     while True:
         # Send location data to the server
         if flight.vehicle.location.global_relative_frame and flight.vehicle.location.global_relative_frame.lat:
-            
             await websocket.send(json.dumps({"type":"position","data":{"lat":flight.vehicle.location.global_relative_frame.lat,
                                              "lon":flight.vehicle.location.global_relative_frame.lon,
                                              "alt":flight.vehicle.location.global_relative_frame.alt}}))

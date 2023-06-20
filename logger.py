@@ -8,7 +8,7 @@ def get_logger(name):
 
     # Create handlers
     c_handler = logging.StreamHandler()  # Console handler
-    c_handler.setLevel(logging.INFO)  # Set the minimum logged level to INFO for console handler
+    c_handler.setLevel(logging.DEBUG)  # Set the minimum logged level to INFO for console handler
 
     # Create formatters and add it to handlers
     c_format = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
