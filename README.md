@@ -43,3 +43,9 @@ brew install moreutils
 ```
 python3 main.py 2>&1 | ts '%Y-%m-%d %H:%M:%S' >> logfile.log
 ```
+
+## upload log
+
+```
+scp -i "~/Documents/admin.pem" ~/Documents/uav-client/logfile.log  ubuntu@ec2-3-139-94-118.us-east-2.compute.amazonaws.com:/home/ubuntu/log
+```
